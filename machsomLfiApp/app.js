@@ -77,9 +77,9 @@ let participants = [
   { name: 'Varda Ullman', phone: 7327194821, time: 18 }
 ];
 
-// const found = participants.find(f => (f.time === 1));
+const found = participants.find(f => (f.time === 1));
 
-// console.log(found);
+console.log(found);
 
 
 
