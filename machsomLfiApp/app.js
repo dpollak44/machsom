@@ -4,22 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var CronJob = require("cron").CronJob;
-// const Nexmo = require('nexmo');
 
-const accountSid = 'ACb19c54d536a0aa80fa812518b3fe291d';
-const authToken = '303c10f2051696036b80fb36ad5e02cb';
-const client = require('twilio')(accountSid, authToken);
 require("dotenv").config();
 
+const { ACC_SID, AUTH_TOKEN } = process.env;
+console.log(ACC_SID, AUTH_TOKEN);
 
-const { API_KEY, API_SECRET } = process.env;
+const client = require('twilio')(ACC_SID, AUTH_TOKEN);
 
-// console.log(API_KEY, API_SECRET);
-
-// const nexmo = new Nexmo({
-//   apiKey: API_KEY,
-//   apiSecret: API_SECRET
-// })
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -77,7 +69,7 @@ let participants = [
   { name: 'Varda Ullman', phone: 7327194821, time: 18 }
 ];
 
-// const found = participants.find(f => (f.time === 1));
+// const found = participants.find(f => (f.time === 10));
 
 // console.log(found);
 
@@ -115,7 +107,7 @@ new CronJob(
 
     // console.log(currentHour + 1);
 
-    const textBody = 'Your machsom lefi will begin in 5 minutes. Please have in mind that it should be a zechus refuah shelaima for Chaim ben Sara. Thank you.';
+    const textBody = 'Your machsom lefi will begin in 1 minutes. Please have in mind that it should be a zechus refuah shelaima for Chaim ben Sara. Thank you.';
 
     const from = '+12513062568';
 
