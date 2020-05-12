@@ -61,11 +61,12 @@ let participants = [
   { name: 'dovid', phone: 7189861567, time: 14 },
   { name: 'Malky Zuckerman', phone: 3477200871, time: 16 },
   { name: 'Shoshana Esther tokayer', phone: 3052180113, time: 18 },
-  { name: 'Moshe sochet', phone: 7189134600, time: 20 },
+  { name: 'Moshe sochet', phone: 7182883831, time: 20 },
+  { name: 'Shmuly Sochet', phone: 6467632849, time: 17 },
   { name: 'Shmuly Sochet', phone: 6467632849, time: 21 },
-  { name: 'Miriam rosen', phone: 7183246128, time: 22 },
+  { name: 'Miriam rosen', phone: 9173246128, time: 22 },
   { name: 'Dovid', phone: 7189861567, time: 23 },
-  { name: 'Rivki Kitevitz', phone: 7328147049, time: 13 },
+  { name: 'Rivki Kitevitz', phone: 7328147049, time: 15 },
   { name: 'Varda Ullman', phone: 7327194821, time: 18 }
 ];
 
@@ -107,7 +108,7 @@ new CronJob(
 
     // console.log(currentHour + 1);
 
-    const textBody = 'Your machsom lefi will begin in 1 minutes. Please have in mind that it should be a zechus refuah shelaima for Chaim ben Sara. Thank you.';
+    const textBody = 'Your machsom lefi will begins in 5 minutes. Please have in mind that it should be a zechus refuah shelaima for Chaim ben Sara. Thank you.';
 
     const from = '+12513062568';
 
@@ -128,7 +129,7 @@ new CronJob(
           to: to
         })
         .then(message => console.log(message));
-      console.log('time', today, 'textBody', textBody, 'from', from, 'to', to, 'name', fpar.name, 'time', fpar.time);
+      console.log('time', today, 'hour', currentHour, 'textBody', textBody, 'from', from, 'to', to, 'name', fpar.name, 'time', fpar.time);
     });
   },
   null,
