@@ -5,12 +5,33 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var CronJob = require("cron").CronJob;
 
-require("dotenv").config();
+// require("dotenv").config();
 
-const { ACC_SID, AUTH_TOKEN } = process.env;
-console.log(ACC_SID, AUTH_TOKEN);
+// const { ACC_SID, AUTH_TOKEN } = process.env;
 
-const client = require('twilio')(ACC_SID, AUTH_TOKEN);
+
+// const client = require('twilio')(ACC_SID, AUTH_TOKEN);
+
+// sendMessage = () => {
+//   console.log('sending message..')
+
+//   client.messages
+//     .create({
+//       body: 'Hi everyone, Boruch Hashem Dr. Kawelblum\'s situation has improved tremeandously. However, he is still in need of much rachamei shamayim. I would therefore like to extend the machsom another 2 weeks. If you would like to stop as of tomorrow,which is the end of the initial 30 days, please call or text me at my regular number  718-913-4600 ASAP.  Thank you.',
+//       from: '+12513062568',
+//       to: '+17189861567',
+//       function(err, response) {
+//         if (err) {
+//           console.log(err)
+//         }
+//         else {
+//           console.log(response)
+//         }
+//       }
+//     })
+// }
+
+// sendMessage();
 
 
 var indexRouter = require('./routes/index');
@@ -78,11 +99,11 @@ let participants = [
 
 // participants.forEach(part => {
 
-//   console.log(part.phone);
+
 
 //   client.messages
 //     .create({
-//       body: 'Hi everyone,Thank you for taking on this Machsom Lefi as a zechus for a Refuah Shelaima for Dr. Kaweblum- Chaim Ben Sara.  A text message reminder will be sent to your phone 5 minutes before your specific hour.  We will be starting tomorrow May 5th IYH. If you have any questions and/or the text message is not at the correct time please be in touch with my regular number 718-913-4600.  May we hear Besuros Tovos soon.',
+//       body: 'Hi everyone, Boruch Hashem Dr. Kawelblum\'s situation has improved tremeandously. However, he is still in need of much rachamei shamayim. I would therefore like to extend the machsom another 2 weeks. If you would like to stop as of tomorrow,which is the end of the initial 30 days, please call or text me at my regular number  718-913-4600 ASAP.  Thank you.',
 //       from: '+12513062568',
 //       to: `+1${part.phone}`
 //     })
@@ -94,47 +115,48 @@ let participants = [
 
 
 
-new CronJob(
-  " 55 * * * *",
 
-  () => {
+// new CronJob(
+//   " 55 * * * *",
+
+//   () => {
 
 
-    let today = new Date();
+//     let today = new Date();
 
-    let currentHour = today.getHours();
+//     let currentHour = today.getHours();
 
-    let currentDayOfWeek = today.getDay(); //Sunday is 0
+//     let currentDayOfWeek = today.getDay(); //Sunday is 0
 
-    // console.log(currentHour + 1);
+//     // console.log(currentHour + 1);
 
-    const textBody = 'Your machsom lefi will begins in 5 minutes. Please have in mind that it should be a zechus refuah shelaima for Chaim ben Sara. Thank you.';
+//     const textBody = 'Your machsom lefi will begins in 5 minutes. Please have in mind that it should be a zechus refuah shelaima for Chaim ben Sara. Thank you.';
 
-    const from = '+12513062568';
+//     const from = '+12513062568';
 
-    const filteredPars = participants.filter(par => (par.time === currentHour + 1));
+//     const filteredPars = participants.filter(par => (par.time === currentHour + 1));
 
-    //
-    //
-    //remember to program shabbos shut off
-    //
-    //
+//     //
+//     //
+//     //remember to program shabbos shut off
+//     //
+//     //
 
-    filteredPars.forEach(fpar => {
-      let to = fpar.phone;
-      client.messages
-        .create({
-          body: textBody,
-          from: from,
-          to: to
-        })
-        .then(message => console.log(message));
-      console.log('time', today, 'hour', currentHour, 'textBody', textBody, 'from', from, 'to', to, 'name', fpar.name, 'time', fpar.time);
-    });
-  },
-  null,
-  true
-);
+//     filteredPars.forEach(fpar => {
+//       let to = fpar.phone;
+//       client.messages
+//         .create({
+//           body: textBody,
+//           from: from,
+//           to: to
+//         })
+//         .then(message => console.log(message));
+//       console.log('time', today, 'hour', currentHour, 'textBody', textBody, 'from', from, 'to', to, 'name', fpar.name, 'time', fpar.time);
+//     });
+//   },
+//   null,
+//   true
+// );
 
 
 
